@@ -15,6 +15,8 @@ function HomePage() {
     if (!searchTerm) return;
 
     navigate(`/search?s=${searchTerm}`);
+
+    console.log(searchTerm);
   };
 
   return (
@@ -45,7 +47,10 @@ function HomePage() {
             type="text"
             ref={searchInputRef}
           />
-          <MagnifyingGlassIcon className="h-6 mr-3 text-gray-800 dark:text-gray-300" />
+          <MagnifyingGlassIcon
+            className="h-6 mr-3 text-gray-800 dark:text-gray-300 cursor-pointer"
+            onClick={search}
+          />
         </div>
         <div>
           <button
