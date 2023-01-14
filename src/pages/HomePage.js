@@ -15,8 +15,6 @@ function HomePage() {
     if (!searchTerm) return;
 
     navigate(`/search?s=${searchTerm}`);
-
-    console.log(searchTerm);
   };
 
   return (

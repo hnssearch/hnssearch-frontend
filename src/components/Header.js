@@ -1,13 +1,16 @@
 import logo_icon from "../assets/images/logo_icon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React, { useRef } from "react";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import getQuery from "../utils/GetQuery";
 
 function Header() {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  let query = getQuery(location);
 
   const routeChange = (route) => {
     navigate(route);
@@ -39,8 +42,7 @@ function Header() {
             ref={searchInputRef}
             type="text"
             className="flex-grow w-full focus:outline-none dark:text-gray-300 bg-neutral-50 dark:bg-neutral-800"
-            // Pass query term and populate default value get from homepage but also from url query
-            // defaultValue={""}
+            defaultValue={query}
           />
           <XMarkIcon
             className="h-7 sm:mr-3 cursor-pointer transition duration-100 transform hover:scale-125
