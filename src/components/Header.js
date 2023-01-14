@@ -1,16 +1,13 @@
 import logo_icon from "../assets/images/logo_icon.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useRef } from "react";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
-import getQuery from "../utils/GetQuery";
 
-function Header() {
+function Header({ query }) {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  let query = getQuery(location);
 
   const routeChange = (route) => {
     navigate(route);
