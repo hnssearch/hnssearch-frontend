@@ -66,15 +66,9 @@ function Results({ query, page }) {
           </div>
         );
       })}
-      {resultHits.length === 0 ? null : (
-        <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center">
-          <Pagination
-            query={query}
-            page={page}
-            totalPages={results.totalPages}
-          />
-        </div>
-      )}
+      <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center">
+        <Pagination query={query} page={page} totalPages={results.totalPages} />
+      </div>
     </div>
   );
 }
