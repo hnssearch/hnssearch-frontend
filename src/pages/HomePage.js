@@ -14,7 +14,7 @@ function HomePage() {
 
     if (!searchTerm) return;
 
-    navigate(`/search?s=${searchTerm}`);
+    navigate(`/search?s=${searchTerm}&page=1`);
   };
 
   return (
