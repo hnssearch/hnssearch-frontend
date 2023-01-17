@@ -37,7 +37,7 @@ function Results({ query, page }) {
   useEffect(() => {
     fetchData(query, page)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setResults(res);
         setResultHits(res.hits);
       })
@@ -50,7 +50,9 @@ function Results({ query, page }) {
       {/*<h2 className="mb-3">React HTTP Request with Async Await Example</h2>*/}
       {resultHits.length !== 0 ? null : (
         <div className="ml-28 mr-10 max-w-4xl">
-          <p>No search results</p>
+          <p className="text-gray-700 dark:text-neutral-200">
+            No search results
+          </p>
         </div>
       )}
       {resultHits.map((item, idx) => {
@@ -58,15 +60,24 @@ function Results({ query, page }) {
           <div className="ml-28 mr-10 max-w-4xl" key={idx}>
             <div>
               <div>
-                <p>{item.url_no_dot}</p>
-                <p>{item.title}</p>
-                <p className="mb-5">{item.content.substring(0, 300)}...</p>
+                <p className="text-sm text-gray-700 dark:text-neutral-200">
+                  {item.url_no_dot}
+                </p>
+                <a
+                  className="text-lg text-blue-800 font-bold dark:text-blue-400"
+                  href={item.url_no_dot}
+                >
+                  {item.title}
+                </a>
+                <p className="mb-9 text-gray-700 dark:text-neutral-200">
+                  {item.content.substring(0, 300)}...
+                </p>
               </div>
             </div>
           </div>
         );
       })}
-      <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center">
+      <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center text-gray-700 dark:text-neutral-200">
         <Pagination query={query} page={page} totalPages={results.totalPages} />
       </div>
     </div>
