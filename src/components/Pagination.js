@@ -13,11 +13,13 @@ function Pagination({ query, page, totalPages }) {
     e.preventDefault();
     let previous = page - 1;
     navigate(`/search?s=${query}&page=${previous}`);
+    window.scrollTo(0, 0);
   };
   const next = (e) => {
     e.preventDefault();
     let nextPage = page + 1;
     navigate(`/search?s=${query}&page=${nextPage}`);
+    window.scrollTo(0, 0);
   };
 
   return (
