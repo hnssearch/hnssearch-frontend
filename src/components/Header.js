@@ -22,7 +22,7 @@ function Header({ query }) {
   };
 
   return (
-    <header className="sticky top-0 bg-neutral-100 dark:bg-neutral-900">
+    <header className="sticky top-0 bg-neutral-200 dark:bg-neutral-900">
       <div className="flex flex-grow w-full p-6 items-center">
         <Link to="/">
           <img

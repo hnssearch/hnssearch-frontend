@@ -59,7 +59,8 @@ function Results({ query, page }) {
       {resultHits.map((item, idx) => {
         return (
           <div
-            className="ml-8 md:ml-28 mr-10 max-w-s md:max-w-4xl break-words"
+            className="px-5 py-2 mb-3 md:mb-0 md:py-5 md:ml-28 md:mr-10 md:max-w-4xl break-words bg-neutral-100
+             dark:bg-neutral-700"
             key={idx}
           >
             <div>
@@ -73,7 +74,7 @@ function Results({ query, page }) {
                 >
                   {item.title}
                 </a>
-                <p className="mb-9 text-gray-700 dark:text-neutral-200">
+                <p className="text-gray-700 dark:text-neutral-200">
                   {item.content.substring(0, 300)}...
                 </p>
               </div>

@@ -25,7 +25,7 @@ function ResultsPage() {
       <div className="sticky top-0">
         <Header query={query} />
       </div>
-      <div className="flex flex-grow dark:bg-neutral-700">
+      <div className="flex-grow bg-neutral-300 md:bg-neutral-100 dark:bg-neutral-900 md:dark:bg-neutral-700">
         <Results query={query} page={page} />
       </div>
       <div className="mt-auto">
