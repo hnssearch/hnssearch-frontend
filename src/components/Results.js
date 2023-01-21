@@ -4,9 +4,10 @@ import { MeiliSearch } from "meilisearch";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 
+// public key for search, free to use
 const client = new MeiliSearch({
-  host: "http://127.0.0.1:7700",
-  //apiKey: 'masterKey',
+  host: "http://index.hnssearch.io",
+  apiKey: "f49e797953cd1c1152b23506f3fbb0f1ad0fe3c3b6632d3170ae6e61085f5994",
 });
 
 const index = client.index("sites");
