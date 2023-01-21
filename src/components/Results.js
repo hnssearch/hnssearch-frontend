@@ -57,7 +57,10 @@ function Results({ query, page }) {
       )}
       {resultHits.map((item, idx) => {
         return (
-          <div className="ml-28 mr-10 max-w-4xl" key={idx}>
+          <div
+            className="ml-8 md:ml-28 mr-10 max-w-s md:max-w-4xl break-words"
+            key={idx}
+          >
             <div>
               <div>
                 <p className="text-sm text-gray-700 dark:text-neutral-200">
