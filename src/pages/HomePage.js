@@ -35,7 +35,7 @@ function HomePage() {
         </div>
       </header>
       <div className="flex flex-col flex-grow w-full items-center">
-        <form className="flex flex-col items-center mt-auto mb-auto md:mt-52 md:mb-0 w-4/5">
+        <form className="flex flex-col items-center mt-auto mb-auto w-4/5">
           <img
             className="h-20 md:h-32 dark:invert"
             src={logo}
@@ -58,7 +58,7 @@ function HomePage() {
           <div>
             <button
               className="bg-gray-200 p-3 px-5 mt-5 rounded-full border border-gray-300 text-gray-800 text-md
-            ring-gray-400 hover:ring-1 focus:outline-none hover:shadow-md"
+            ring-gray-400 hover:ring-1 focus:outline-none hover:shadow-md mb-20"
               onClick={search}
               type="submit"
             >
