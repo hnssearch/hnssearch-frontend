@@ -51,7 +51,7 @@ function Header({ query }) {
           dark:text-gray-300"
             onClick={search}
           />
-          <button hidden onClick={search} type="submit" />
+          <button onClick={search} type="submit" />
         </form>
         <Cog6ToothIcon
           className="ml-auto h-8 cursor-pointer transition duration-100 transform hover:scale-110
