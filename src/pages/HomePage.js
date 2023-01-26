@@ -8,13 +8,33 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
+
+  let shortcuts = {
+    "!hn": "https://hnsnetwork.com/search?query=",
+    "!nb": "https://www.namebase.io/domains/",
+    "!hm": "http://handshake.mercenary/search.php?keywords=",
+    "!sp": "https://parking.sinpapeles.xyz/?search=",
+    "!ni": "https://www.niami.io/domain/",
+    "!hf": "https://e.hnsfans.com/search?q=",
+    "!ak": "https://forum.akash.network/search?q=",
+    "!ddg": "https://duckduckgo.com/?q=",
+  };
+
   const search = (e) => {
     e.preventDefault();
-    const searchTerm = searchInputRef.current.value;
+    let searchTerm = searchInputRef.current.value;
 
     if (!searchTerm) return;
 
-    navigate(`/search?s=${searchTerm}&page=1`);
+    let splitSearchTerm = searchTerm.split(" ");
+
+    if (splitSearchTerm[0] in shortcuts) {
+      searchTerm =
+        shortcuts[splitSearchTerm[0]] + splitSearchTerm.slice(1).join("%20");
+      window.location.assign(searchTerm);
+    } else {
+      navigate(`/search?s=${searchTerm}&page=1`);
+    }
   };
 
   return (
