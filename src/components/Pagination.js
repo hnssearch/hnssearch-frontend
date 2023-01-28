@@ -21,14 +21,17 @@ function Pagination({ query, page, totalPages }) {
     navigate(`/search?s=${query}&page=${nextPage}`);
     window.scrollTo(0, 0);
   };
-
-  return (
-    <div className="flex space-x-3 items-center">
-      {page > 1 && <button onClick={previous}>Previous</button>}
-      <p>{page}</p>
-      {page < totalPages && <button onClick={next}>Next</button>}
-    </div>
-  );
+  if (totalPages > 1) {
+    return (
+      <div className="flex space-x-3 items-center">
+        {page > 1 && <button onClick={previous}>Previous</button>}
+        <p>{page}</p>
+        {page < totalPages && <button onClick={next}>Next</button>}
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 }
 
 export default Pagination;
