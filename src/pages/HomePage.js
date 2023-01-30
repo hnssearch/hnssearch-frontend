@@ -46,9 +46,9 @@ function HomePage() {
           </Link>
         </div>
         <div className="flex space-x-3 items-center">
-          <Link className="link" to="/About">
+          <a href="https://docs.hnssearch.io/" className="link">
             About
-          </Link>
+          </a>
           <Link className="link" to="/Settings">
             Settings
           </Link>
