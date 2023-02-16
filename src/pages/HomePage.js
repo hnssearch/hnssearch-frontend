@@ -41,17 +41,17 @@ function HomePage() {
     <div className="flex flex-col items-center justify-center bg-neutral-100 h-screen dark:bg-neutral-900">
       <header className="flex w-full p-3 justify-between text-gray-800 text-lg dark:text-gray-300">
         <div className="flex space-x-3 items-center">
-          <Link className="link" to="/dwebpulse">
+          <Link className="link ml-3" to="/dwebpulse">
             dwebpulse
           </Link>
         </div>
-        <div className="flex space-x-3 items-center">
+        <div className="flex space-x-3 items-center mr-3">
           <a href="https://docs.hnssearch.io/" className="link">
             About
           </a>
-          <Link className="link" to="/Settings">
-            Settings
-          </Link>
+          {/*<Link className="link" to="/Settings">*/}
+          {/*  Settings*/}
+          {/*</Link>*/}
         </div>
       </header>
       <div className="flex flex-col flex-grow w-full items-center">

@@ -2,16 +2,16 @@ import logo_icon from "../assets/images/logo_icon.png";
 import { Link } from "react-router-dom";
 import React, { useRef } from "react";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+// import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
 function Header({ query }) {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
 
-  const routeChange = (route) => {
-    navigate(route);
-  };
+  // const routeChange = (route) => {
+  //   navigate(route);
+  // };
   let shortcuts = {
     "!hn": "https://hnsnetwork.com/search?query=",
     "!nb": "https://www.namebase.io/domains/",
@@ -72,11 +72,11 @@ function Header({ query }) {
           />
           <button onClick={search} type="submit" />
         </form>
-        <Cog6ToothIcon
-          className="ml-auto h-8 cursor-pointer transition duration-100 transform hover:scale-110
-        text-gray-800 dark:text-gray-300"
-          onClick={() => routeChange("/settings")}
-        />
+        {/*<Cog6ToothIcon*/}
+        {/*  className="ml-auto h-8 cursor-pointer transition duration-100 transform hover:scale-110*/}
+        {/*text-gray-800 dark:text-gray-300"*/}
+        {/*  onClick={() => routeChange("/settings")}*/}
+        {/*/>*/}
       </div>
     </header>
   );

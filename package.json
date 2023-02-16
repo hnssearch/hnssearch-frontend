@@ -1,7 +1,7 @@
 {
   "name": "hnssearch-frontend",
   "homepage": ".",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.0.13",
