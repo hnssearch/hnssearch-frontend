@@ -30,7 +30,7 @@ function StatsPage() {
         <h1 className=" hidden text-gray-800 text-5xl dark:text-gray-300 mt-auto md:block">
           HNSSearch Index
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex flex-col items-center mt-32 mb-auto w-4/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 flex flex-col items-center mt-2 md:mt-32 md:mb-auto w-4/5">
           <StatTile title="Pages" value={stats.n_entries} />
           <StatTile title="Different Sites" value={stats.n_domains} />
           <StatTile title="Unique TLDs" value={stats.n_tlds} />
