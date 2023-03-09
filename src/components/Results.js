@@ -103,7 +103,7 @@ function Results({ query, page }) {
               <div>
                 <div className="flex items-center">
                   {/* comparison needs to be changed for production to check if ssl is True or False and URL to docs needs to be changed*/}
-                  {item.ssl === "" ? null :  (<a href="https://docs.hnssearch.io/handshake/"> <img className="h-4 float-left mr-1" src={protect_icon} alt="protect_icon" title="verified https available"/></a>)}
+                  {item.ssl !== "" &&  (<a href="https://docs.hnssearch.io/handshake/"> <img className="h-4 float-left mr-1" src={protect_icon} alt="protect_icon" title="verified https available"/></a>)}
                 <p className="flex text-sm text-gray-700 dark:text-neutral-200">
                   {item.url_no_dot}
                 </p>
