@@ -71,6 +71,7 @@ function HomePage() {
             <input
               className="flex-grow focus:outline-none text-xl dark:text-gray-300 bg-neutral-100 dark:bg-neutral-900"
               type="text"
+              autoFocus
               ref={searchInputRef}
             />
             <MagnifyingGlassIcon
