@@ -110,7 +110,8 @@ function Results({ query, page }) {
                   {item.title}
                 </a>
                 <p className="text-gray-700 dark:text-neutral-200">
-                  {item.content.substring(0, 300)}...
+                  {item.description?.length > 25 ? item.description.substring(0, 300) : item.content.substring(0, 300)}
+                  {(item.description?.length > 25 && item.description?.length > 300) || ((item.description === null || item.description?.length <= 25) && item.content.length > 300) ? '...' : ''}
                 </p>
               </div>
             </div>
