@@ -1,11 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 function HomePage() {
+  const [showClearIcon, setShowClearIcon] = useState(false);
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -73,9 +75,24 @@ function HomePage() {
               type="text"
               autoFocus
               ref={searchInputRef}
+              onChange={(e) => {
+                setShowClearIcon(e.target.value !== "");
+              }}
             />
+            {showClearIcon && (
+              <XMarkIcon
+                className="h-7 hidden sm:inline-flex sm:mr-3 border-r-2 pr-4 cursor-pointer border-gray-300
+              text-gray-800 dark:text-gray-300"
+                onClick={() => {
+                  searchInputRef.current.value = "";
+                  setShowClearIcon(false);
+                  searchInputRef.current.focus();
+                }}
+              />
+            )}
             <MagnifyingGlassIcon
-              className="h-6 mr-3 text-gray-800 dark:text-gray-300 cursor-pointer"
+              className="h-6 mr-3 hidden cursor-pointer sm:inline-flex text-gray-800
+          dark:text-gray-300"
               onClick={search}
             />
           </div>
