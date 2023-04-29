@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import HandypediaInfobox from "./HandypediaInfobox";
 import CustomLink from "../utils/CustomLink";
+
+//testing which icon to use
 //import protect_icon from "../assets/images/protect.png";
 import protect_icon from "../assets/images/ssl.png";
 
@@ -95,6 +97,12 @@ function Results({ query, page }) {
           </div>
         )}
         {resultHits.map((item, idx) => {
+          const lastCheckedTimestamp = item.last_checked.$date;
+          const lastCheckedDate = new Date(lastCheckedTimestamp);
+          const formattedDate = `${lastCheckedDate.getDate()}/${
+            lastCheckedDate.getMonth() + 1
+          }/${lastCheckedDate.getFullYear()}`;
+
           return (
             <div
               className="px-5 py-2 mb-3 md:mb-0 md:py-5 md:ml-28 md:mr-10 md:max-w-4xl break-words bg-neutral-100
@@ -104,21 +112,20 @@ function Results({ query, page }) {
               <div>
                 <div>
                   <div className="flex items-center">
-
                     {item.cert === "true" && (
-                        <a href="https://docs.hnssearch.io/handshake/">
-                          <img
-                              className="h-4 float-left mr-1"
-                              src={protect_icon}
-                              alt="protect_icon"
-                              title="verified https available"
-                          />
-                        </a>
+                      // needs to be changes a soon as docs are ready
+                      //<a href="https://docs.hnssearch.io/handshake/">
+                      <img
+                        className="h-4 float-left mr-1"
+                        src={protect_icon}
+                        alt="protect_icon"
+                        title={`verified https available | checked: ${formattedDate}`}
+                      />
+                      //</a>
                     )}
                     <p className="flex text-sm text-gray-700 dark:text-neutral-200">
                       <CustomLink url={item.url_no_dot} />
                     </p>
-
                   </div>
                   <a
                     className="text-lg text-blue-800 font-bold dark:text-blue-400"
