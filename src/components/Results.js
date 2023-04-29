@@ -4,7 +4,8 @@ import { MeiliSearch } from "meilisearch";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import HandypediaInfobox from "./HandypediaInfobox";
-import protect_icon from "../assets/images/protect.png"
+//import protect_icon from "../assets/images/protect.png";
+import protect_icon from "../assets/images/ssl.png";
 
 // public key for search, free to use
 const client = new MeiliSearch({
@@ -18,7 +19,7 @@ const clientHandypedia = new MeiliSearch({
 });
 
 const index = client.index("sites");
-const indexHandypedia = clientHandypedia.index("handypedia")
+const indexHandypedia = clientHandypedia.index("handypedia");
 
 const fetchData = async (query, page) => {
   const response = await index.search(query, {
@@ -69,61 +70,78 @@ function Results({ query, page }) {
 
   useEffect(() => {
     fetchDataHandypedia(query)
-        .then((res) => {
-          // console.log(res);
-          setHandypediaResults(res.hits);
-        })
-        .catch((e) => {
-          console.log(e.message);
-        });
+      .then((res) => {
+        // console.log(res);
+        setHandypediaResults(res.hits);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
   }, [query]);
 
   return (
     <div className="max-w-7xl">
       <div className="ml-28 lg:ml-4 lg:float-right mr-10 lg:max-w-xs mt-3 hidden md:block">
-        <HandypediaInfobox handypediaResults={handypediaResults}/>
+        <HandypediaInfobox handypediaResults={handypediaResults} />
       </div>
-    <div className="flex flex-col mt-3">
-      {/*<h2 className="mb-3">React HTTP Request with Async Await Example</h2>*/}
-      {resultHits.length !== 0 ? null : (
-        <div className="ml-28 mr-10 max-w-4xl">
-          <p className="text-gray-700 dark:text-neutral-200">
-            No search results
-          </p>
-        </div>
-      )}
-      {resultHits.map((item, idx) => {
-        return (
-          <div
-            className="px-5 py-2 mb-3 md:mb-0 md:py-5 md:ml-28 md:mr-10 md:max-w-4xl break-words bg-neutral-100
+      <div className="flex flex-col mt-3">
+        {/*<h2 className="mb-3">React HTTP Request with Async Await Example</h2>*/}
+        {resultHits.length !== 0 ? null : (
+          <div className="ml-28 mr-10 max-w-4xl">
+            <p className="text-gray-700 dark:text-neutral-200">
+              No search results
+            </p>
+          </div>
+        )}
+        {resultHits.map((item, idx) => {
+          return (
+            <div
+              className="px-5 py-2 mb-3 md:mb-0 md:py-5 md:ml-28 md:mr-10 md:max-w-4xl break-words bg-neutral-100
              dark:bg-neutral-700"
-            key={idx}
-          >
-            <div>
+              key={idx}
+            >
               <div>
-                <div className="flex items-center">
-                  {/* comparison needs to be changed for production to check if ssl is True or False and URL to docs needs to be changed*/}
-                  {item.ssl !== "" &&  (<a href="https://docs.hnssearch.io/handshake/"> <img className="h-4 float-left mr-1" src={protect_icon} alt="protect_icon" title="verified https available"/></a>)}
-                <p className="flex text-sm text-gray-700 dark:text-neutral-200">
-                  {item.url_no_dot}
-                </p>
+                <div>
+                  <div className="flex items-center">
+                    {/* comparison needs to be changed for production to check if ssl is True or False and URL to docs needs to be changed*/}
+                    {item.cert === "true" && (
+                      <a href="https://docs.hnssearch.io/handshake/">
+                        <img
+                          className="h-4 float-left mr-1"
+                          src={protect_icon}
+                          alt="protect_icon"
+                          title="verified https available"
+                        />
+                      </a>
+                    )}
+                    <p className="flex text-sm text-gray-700 dark:text-neutral-200">
+                      {item.url_no_dot}
+                    </p>
+                  </div>
+                  <a
+                    className="text-lg text-blue-800 font-bold dark:text-blue-400"
+                    href={item.url_no_dot}
+                  >
+                    {item.title}
+                  </a>
+                  <p className="text-gray-700 dark:text-neutral-200">
+                    {item.description?.length > 25
+                      ? item.description.substring(0, 300)
+                      : item.content.substring(0, 300)}
+                    {(item.description?.length > 25 &&
+                      item.description?.length > 300) ||
+                    ((item.description === null ||
+                      item.description?.length <= 25) &&
+                      item.content.length > 300)
+                      ? "..."
+                      : ""}
+                  </p>
                 </div>
-                <a
-                  className="text-lg text-blue-800 font-bold dark:text-blue-400"
-                  href={item.url_no_dot}
-                >
-                  {item.title}
-                </a>
-                <p className="text-gray-700 dark:text-neutral-200">
-                  {item.description?.length > 25 ? item.description.substring(0, 300) : item.content.substring(0, 300)}
-                  {(item.description?.length > 25 && item.description?.length > 300) || ((item.description === null || item.description?.length <= 25) && item.content.length > 300) ? '...' : ''}
-                </p>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
       <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center text-gray-700 dark:text-neutral-200">
         <Pagination query={query} page={page} totalPages={results.totalPages} />
       </div>
