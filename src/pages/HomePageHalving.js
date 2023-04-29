@@ -3,13 +3,18 @@ import { useState } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import logoHalf from "../assets/images/logo_half.png";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
+
 function HomePage() {
   const [showClearIcon, setShowClearIcon] = useState(false);
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
+  const [confettiActive, setConfettiActive] = useState(false);
+  const [logoSrc, setLogoSrc] = useState(logo);
 
   let shortcuts = {
     "!hn": "https://hnsnetwork.com/search?query=",
@@ -61,10 +66,27 @@ function HomePage() {
       </header>
       <div className="flex flex-col flex-grow w-full items-center">
         <form className="flex flex-col items-center mt-auto mb-auto w-4/5">
-          <img
-            className="h-20 md:h-32 dark:invert"
-            src={logo}
-            alt="hnssearch_logo"
+          <a href="https://hnsnetwork.com/blocks/170000">
+            <img
+              className="h-20 md:h-32 dark:invert logo"
+              src={logoSrc}
+              alt="hnssearch_logo"
+              onMouseEnter={() => {
+                setLogoSrc(logoHalf);
+                setConfettiActive(true);
+              }}
+              onMouseLeave={() => {
+                setLogoSrc(logo);
+              }}
+            />
+          </a>
+
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            numberOfPieces={200}
+            run={confettiActive}
+            recycle={true}
           />
           <div
             className="flex w-full mt-10 max-w-sm rounded-full border border-gray-300 items-center pl-7 pr-2 py-4

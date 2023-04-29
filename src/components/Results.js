@@ -4,6 +4,7 @@ import { MeiliSearch } from "meilisearch";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import HandypediaInfobox from "./HandypediaInfobox";
+import CustomLink from "../utils/CustomLink";
 //import protect_icon from "../assets/images/protect.png";
 import protect_icon from "../assets/images/ssl.png";
 
@@ -103,20 +104,21 @@ function Results({ query, page }) {
               <div>
                 <div>
                   <div className="flex items-center">
-                    {/* comparison needs to be changed for production to check if ssl is True or False and URL to docs needs to be changed*/}
+
                     {item.cert === "true" && (
-                      <a href="https://docs.hnssearch.io/handshake/">
-                        <img
-                          className="h-4 float-left mr-1"
-                          src={protect_icon}
-                          alt="protect_icon"
-                          title="verified https available"
-                        />
-                      </a>
+                        <a href="https://docs.hnssearch.io/handshake/">
+                          <img
+                              className="h-4 float-left mr-1"
+                              src={protect_icon}
+                              alt="protect_icon"
+                              title="verified https available"
+                          />
+                        </a>
                     )}
                     <p className="flex text-sm text-gray-700 dark:text-neutral-200">
-                      {item.url_no_dot}
+                      <CustomLink url={item.url_no_dot} />
                     </p>
+
                   </div>
                   <a
                     className="text-lg text-blue-800 font-bold dark:text-blue-400"
