@@ -109,14 +109,13 @@ function Results({ query, page }) {
         <HandypediaInfobox handypediaResults={handypediaResults} />
       </div>
       <div className="flex flex-col mt-3">
-        {resultHits.length !== 0 ? null : (
+        {resultHits.length === 0 ? (
           <div className="ml-28 mr-10 max-w-4xl">
             <p className="text-gray-700 dark:text-neutral-200">
               No search results
             </p>
           </div>
-        )}
-        {window.innerWidth < 640 ? (
+        ) : window.innerWidth < 640 ? (
           <InfiniteScroll
             dataLength={resultHits.length}
             next={fetchMoreData}
