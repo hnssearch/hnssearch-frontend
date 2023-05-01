@@ -25,6 +25,8 @@ function Header({ query }) {
 
   const search = (e) => {
     e.preventDefault();
+    window.scrollTo(0, 0);
+
     let searchTerm = searchInputRef.current.value;
 
     if (!searchTerm) return;
