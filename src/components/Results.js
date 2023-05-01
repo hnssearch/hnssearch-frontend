@@ -104,13 +104,8 @@ function Results({ query, page }) {
     </h4>
   );
 
-  const handlePageChange = (newPage) => {
-    navigate(`/search?s=${query}&page=${newPage}`);
-    window.scrollTo(0, 0);
-  };
-
   const ResultsList = ({ hits }) => (
-    <>
+    <div>
       {hits.map((item, idx) => {
         const lastCheckedTimestamp = item.last_checked.$date;
         const lastCheckedDate = new Date(lastCheckedTimestamp);
@@ -169,7 +164,7 @@ function Results({ query, page }) {
           </div>
         );
       })}
-    </>
+    </div>
   );
 
   return (
@@ -201,7 +196,6 @@ function Results({ query, page }) {
                     query={query}
                     page={page}
                     totalPages={results.totalPages}
-                    onPageChange={handlePageChange}
                   />
                 </div>
               </>
