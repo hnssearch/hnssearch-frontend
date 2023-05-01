@@ -47,6 +47,7 @@ function Results({ query, page }) {
   const [results, setResults] = useState([]);
   const [handypediaResults, setHandypediaResults] = useState([]);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ function Results({ query, page }) {
   }, [page, query, navigate]);
 
   useEffect(() => {
+    setLoading(true);
     fetchData(query, page)
       .then((res) => {
         setResults(res);
@@ -64,6 +66,9 @@ function Results({ query, page }) {
       })
       .catch((e) => {
         console.log(e.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [query, page]);
 
@@ -109,7 +114,11 @@ function Results({ query, page }) {
         <HandypediaInfobox handypediaResults={handypediaResults} />
       </div>
       <div className="flex flex-col mt-3">
-        {resultHits.length === 0 ? (
+        {loading ? (
+          <div className="ml-28 mr-10 max-w-4xl">
+            <p className="text-gray-700 dark:text-neutral-200">Loading... </p>
+          </div>
+        ) : resultHits.length === 0 ? (
           <div className="ml-28 mr-10 max-w-4xl">
             <p className="text-gray-700 dark:text-neutral-200">
               No search results
