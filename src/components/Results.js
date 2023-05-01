@@ -109,6 +109,13 @@ function Results({ query, page }) {
         <HandypediaInfobox handypediaResults={handypediaResults} />
       </div>
       <div className="flex flex-col mt-3">
+        {resultHits.length !== 0 ? null : (
+          <div className="ml-28 mr-10 max-w-4xl">
+            <p className="text-gray-700 dark:text-neutral-200">
+              No search results
+            </p>
+          </div>
+        )}
         {window.innerWidth < 640 ? (
           <InfiniteScroll
             dataLength={resultHits.length}
@@ -124,24 +131,14 @@ function Results({ query, page }) {
           </InfiniteScroll>
         ) : (
           <div>
-            {resultHits.length !== 0 ? (
-              <div>
-                <ResultsList hits={resultHits} />
-                <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center text-gray-700 dark:text-neutral-200">
-                  <Pagination
-                    query={query}
-                    page={page}
-                    totalPages={results.totalPages}
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="ml-28 mr-10 max-w-4xl">
-                <p className="text-gray-700 dark:text-neutral-200">
-                  No search results
-                </p>
-              </div>
-            )}
+            <ResultsList hits={resultHits} />
+            <div className="flex flex-col mt-auto mb-5 w-full p-3 justify-between items-center text-gray-700 dark:text-neutral-200">
+              <Pagination
+                query={query}
+                page={page}
+                totalPages={results.totalPages}
+              />
+            </div>
           </div>
         )}
       </div>
