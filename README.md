@@ -1,4 +1,4 @@
-# hnssearch-frontend
+# HNSSearch frontend
 
 hnssearch is an open-source search engine for the [Handshake](https://handshake.org/) community. It is currently in alpha and is being actively developed.
 
@@ -29,6 +29,9 @@ npm start
 ```
 
 This will start the development server on http://localhost:3000. You can access the search engine by navigating to that address in your web browser.
+
+## Contributing
+Contributions are welcome! Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines.
 
 ## License
 
