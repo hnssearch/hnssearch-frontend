@@ -47,7 +47,10 @@ function HomePage() {
             dwebpulse
           </Link>
         </div>
-        <div className="flex space-x-3 items-center mr-3">
+        <div className="flex space-x-3 items-center mr-3 gap-4">
+          <Link className="link ml-3" to="/missing-sites">
+            Missing Pages
+          </Link>
           <Link className="link ml-3" to="/stats">
             Stats
           </Link>
